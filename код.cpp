@@ -17,7 +17,7 @@ void BFS(int s , int n)
 	queue <int> Q;
 	Q.push(s);
 	dist[s] = 0;
-	printf("\Порядок обхода:");
+	printf("Порядок обхода:");
 	while(!Q.empty())
 	{
 		s = Q.front();
@@ -35,10 +35,13 @@ void BFS(int s , int n)
 	printf("\nРасстояние: ");
 	for(int i = 0; i < n; i++)
 	{
+		
 		if(dist[i] != -1)
 		{
 			printf("%d", dist[i]);
 		}
+
+		dist[i] = -1;
 	}
 
 }
@@ -48,12 +51,12 @@ int _tmain(int argc, _TCHAR* argv[])
   system("chcp 1251");
   system("cls");
 
-  int n,i,j,x, Nach;
+  int n,i,j, Nach;
   
    printf("Введите размер матрицы:");
    scanf("%d", &n);
-   printf("введите размер вектора vis:");
-   scanf("%d",&x);
+  
+   
   dist = (int*)malloc(n * sizeof(int));
   
   matr = (int**)malloc(n * sizeof(int*));
@@ -79,7 +82,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		}
 	}
   }
-  for(i = 0; i < x; i++)
+  for(i = 0; i < n; i++)
   {
 	dist[i] = -1;
   }
@@ -95,16 +98,20 @@ int _tmain(int argc, _TCHAR* argv[])
   }
   printf( " \n   ");
   printf( " \n   ");
-  for(int i = 0; i < x; i++)
+  for(int i = 0; i < n; i++)
   {
 	printf("%d\t", dist[i]);
   }
   printf( " \n   ");
 
-  printf("Введите вершину начала обхода:\n");
-  scanf("%d", &Nach);
-  BFS(Nach, n);
 
+  for(int i = 0; i < n; i++)
+  {
+	  BFS(i, n);
+	  printf( " \n   ");
+
+  }
+  
 
   
     getch();
